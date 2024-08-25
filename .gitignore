@@ -1,0 +1,11 @@
+/vendor/
+/.idea
+.phpunit.result.cache
+.DS_Store
+/data/
+!/data/.gitkeeper
+/migrations/notion
+/migrations/jsonToDb.php
+src/reserve.php
+.env
+env2
