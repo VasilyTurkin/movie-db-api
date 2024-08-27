@@ -14,7 +14,7 @@ class HttpHandler
         $this->db = $db;
     }
 
-    public function handle()
+    public function handle(): void
     {
         header("Content-Type: application/json; charset=UTF-8");
 
@@ -24,16 +24,22 @@ class HttpHandler
             $_REQUEST['id'] = $match[1];
             if ($_SERVER["REQUEST_METHOD"] === 'GET') {
                 (new MovieController($this->db))->readOne();
-
             } else {
                 http_response_code(405);
                 echo json_encode(["message" => "Method not allowed"], JSON_UNESCAPED_UNICODE);
             }
+            return;
 
+        } elseif (preg_match('/^\/api\/movies$/', $_SERVER['REQUEST_URI'])) {
+            if ($_SERVER["REQUEST_METHOD"] === 'GET') {
+                (new MovieController($this->db))->readAll();
+            } else {
+                http_response_code(405);
+                echo json_encode(["message" => "Method not allowed"], JSON_UNESCAPED_UNICODE);
+            }
             return;
         }
 
         http_response_code(404);
-
     }
 }
