@@ -1,2 +1,19 @@
 {
+    "name": "vasilyturkin/movie-db-api",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vasily Turkin",
+            "email": "turkin1051994@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "ext-pdo": "*"
+    }
 }
