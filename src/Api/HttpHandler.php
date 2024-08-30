@@ -30,7 +30,7 @@ class HttpHandler
             }
             return;
 
-        } elseif (preg_match('/^\/api\/movies$/', $_SERVER['REQUEST_URI'])) {
+        } elseif (preg_match('/^\/api\/movies(\?.*)?$/', $_SERVER['REQUEST_URI'])) {
             if ($_SERVER["REQUEST_METHOD"] === 'GET') {
                 (new MovieController($this->db))->readAll();
             } else {
